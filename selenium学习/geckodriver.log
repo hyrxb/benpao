@@ -1,0 +1,67 @@
+1506587325585	geckodriver	INFO	geckodriver 0.18.0
+1506587325589	geckodriver	INFO	Listening on 127.0.0.1:59003
+1506587326698	geckodriver::marionette	INFO	Starting browser /usr/bin/firefox with args ["-marionette"]
+
+(firefox:5519): GConf-WARNING **: Client failed to connect to the D-BUS daemon:
+Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+1506587327965	Marionette	INFO	Enabled via --marionette
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_get_unique_name: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_get_unique_name: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GConf-WARNING **: Client failed to connect to the D-BUS daemon:
+Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+
+(firefox:5519): LIBDBUSMENU-GLIB-WARNING **: Unable to get session bus: The connection is closed
+
+(firefox:5519): GConf-WARNING **: Client failed to connect to the D-BUS daemon:
+Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_get_unique_name: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GConf-WARNING **: Client failed to connect to the D-BUS daemon:
+Did not receive a reply. Possible causes include: the remote application did not send a reply, the message bus security policy blocked the reply, the reply timeout expired, or the network connection was broken.
+1506587331104	Marionette	INFO	Listening on port 46117
+JavaScript error: chrome://marionette/content/server.js, line 337: NS_ERROR_SOCKET_ADDRESS_IN_USE: Component returned failure code: 0x804b0036 (NS_ERROR_SOCKET_ADDRESS_IN_USE) [nsIServerSocket.initSpecialConnection]
+1506587331181	Marionette	WARN	TLS certificate errors will be ignored for this session
+1506587331250	Marionette	DEBUG	loaded listener.js
+1506587331373	Marionette	DEBUG	Received DOM event "beforeunload" for "about:blank"
+1506587331698	Marionette	DEBUG	Received DOM event "pagehide" for "about:blank"
+1506587331700	Marionette	DEBUG	Received DOM event "unload" for "about:blank"
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_register_object: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(firefox:5519): GLib-GIO-CRITICAL **: g_dbus_connection_get_unique_name: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+1506587332509	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.baidu.com/"
+1506587332654	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.baidu.com/"
+1506587332668	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.baidu.com/"
+1506587332947	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.baidu.com/"
+1506587332955	Marionette	DEBUG	Received DOM event "unload" for "https://www.baidu.com/"
+1506587335344	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://news.baidu.com/"
+1506587335612	Marionette	DEBUG	Received DOM event "pageshow" for "http://news.baidu.com/"
+1506587335758	Marionette	DEBUG	Received DOM event "beforeunload" for "http://news.baidu.com/"
+1506587335890	Marionette	DEBUG	Received DOM event "pagehide" for "http://news.baidu.com/"
+1506587335894	Marionette	DEBUG	Received DOM event "unload" for "http://news.baidu.com/"
+1506587336383	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "https://www.baidu.com/"
+1506587336438	Marionette	DEBUG	Received DOM event "pageshow" for "https://www.baidu.com/"
+1506587336459	Marionette	DEBUG	Received DOM event "beforeunload" for "https://www.baidu.com/"
+1506587336554	Marionette	DEBUG	Received DOM event "pagehide" for "https://www.baidu.com/"
+1506587336574	Marionette	DEBUG	Received DOM event "unload" for "https://www.baidu.com/"
+1506587337372	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://news.baidu.com/"
+1506587337599	Marionette	DEBUG	Received DOM event "pageshow" for "http://news.baidu.com/"
+1506587337692	Marionette	INFO	New connections will no longer be accepted
