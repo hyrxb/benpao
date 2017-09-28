@@ -1,0 +1,53 @@
+$ sudo pip install selenium
+
+from selenium import webdriver  
+  
+driver = webdriver.Chrome()  
+# driver = webdriver.Firefox()  
+driver.get('http://www.baidu.com')  
+print driver.title  
+driver.quit()  
+
+运行时在driver = webdriver.Chrome()处报错：
+OSError: [Errno 20] Not a directory
+这里使用webdriver.Chrome()或者webdriver.Firefox()都报一样的错
+
+查了半天，找到下载地址：
+
+chromedriver（Chrome浏览器）：
+http://chromedriver.storage.googleapis.com/index.html
+
+geckodriver（Firefox浏览器）
+
+https://github.com/mozilla/geckodriver/releases
+
+安装的方法：http://stackoverflow.com/questions/8255929/running-webdriver-chrome-with-selenium
+
+'''
+
+Check you have installed latest version of chrome brwoser-> chromium-browser -version
+If not, install latest version of chrome sudo apt-get install chromium-browser
+get appropriate version of chrome driver from here
+Unzip the chromedriver.zip
+Move the file to /usr/bin directory sudo mv chromedriver /usr/bin
+Goto /usr/bin directory and you would need to run something like chmod a+x chromedriver to mark it executable.
+finally you can execute the code.
+
+'''
+
+简单的说，就是下载解压后，放到/usr/bin，然后加上执行权限，命令如下：
+
+$ unzip chromedriver_linux64.zip
+
+$ sudo mv chromedriver /usr/bin/
+
+$ sudo chmod +x chromedriver
+
+另一个geckodriver也是一样
+
+
+4,后记
+
+再次执行测试代码成功，说明selenium基本安装成功了。
+
+找了半天安装selenium的博客，但是没看到几个ubuntu下关于driver的具体安装的，所以我这里记录下。
