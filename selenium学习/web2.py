@@ -18,10 +18,11 @@ second_url = 'http://news.baidu.com'
 print 'now access %s' %(second_url)
 
 driver.get(second_url)
-
+#后退
 print "back to %s" %(first_url)
 driver.back()
 
 print "forward to %s" %(second_url)
+#前进
 driver.forward()
 driver.quit()
