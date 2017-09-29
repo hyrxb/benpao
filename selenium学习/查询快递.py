@@ -20,10 +20,11 @@ user_agents = [
 		 'User-Agent, Mozilla/5.0 (Linux; U; Android 2.3.7; en-us; Nexus One Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1'
               ]
 
-
+#随机选取一个user_agent
 user_agent = random.choice(user_agents)
 
-headers = {'User-Agent':user_agent}
+#设置header头
+headers = {'User-Agent':user_agent,'Referer':'http://www.kuaidi100.com'}
 
 values = {}
 
