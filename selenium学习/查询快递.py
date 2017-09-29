@@ -5,7 +5,7 @@ import urllib
 import urllib2
 import random
 
-# http://www.kuaidi100.com/query?type=ems&postid=1033291133826&id=1&valicode=&temp=0.2661384065187702
+#     http://www.kuaidi100.com/query?type=ems&postid=1033291133826&id=1&valicode=&temp=0.2661384065187702
 
 #通过快递100接口查询快递
 url = 'http://www.kuaidi100.com/query'
