@@ -1,0 +1,53 @@
+In [2]: from learn.models import Person
+
+In [3]: Person.objects.create(name="Gua",age=22)
+Out[3]: <Person: Person object>
+
+In [4]: Person.objects.get(name='Gua')
+Out[4]: <Person: Person object>
+
+In [5]: Person.objects.get(name='Gua')
+Out[5]: <Person: Person object>
+
+In [6]: Person.objects.get(name='Gua')
+Out[6]: <Person: Person object>
+
+In [7]: Person.objects.get(name='Gua')
+Out[7]: <Person: Person object>
+
+In [8]: p = Person(name='lucy',age=20)
+
+In [9]: p.save()
+
+In [10]:  p = Person(name='jack')
+
+In [11]: p.age = 20
+
+In [12]: p.save()
+
+In [13]: Person.objects.get_or_create(name='xiaoqiang',age=3)
+Out[13]: (<Person: Person object>, True)
+
+In [14]: Person.objects.all()
+Out[14]: [<Person: Person object>, <Person: Person object>, <Person: Person object>, <Person: Person object>]
+
+In [15]: Person.objects.all()[:10]
+Out[15]: [<Person: Person object>, <Person: Person object>, <Person: Person object>, <Person: Person object>]
+
+In [16]: Person.objects.get(name='jack')
+Out[16]: <Person: Person object>
+
+In [17]: Person.objects.filter(name="abc")
+Out[17]: []
+
+In [18]: Person.objects.filter(name__iexact='abc')
+Out[18]: []
+
+In [19]: Person.objects.filter(name__contains="abc")
+Out[19]: []
+
+In [20]: Person.objects.filter(name__icontains="abc")
+Out[20]: []
+
+In [21]: Person.objects.filter(name__regex='^abc')
+Out[21]: []

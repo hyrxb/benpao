@@ -32,7 +32,7 @@ class Cq(threading.Thread):
 		response = urllib2.urlopen(req)
 		html = response.read()
 		soup = BeautifulSoup(html,'html.parser')
-		titiles = soup.find_all('th',attrs={'class':'forumtit'})
+		titiles = soup.find_all('th')
 		print titiles
 
 
