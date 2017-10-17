@@ -51,12 +51,3 @@ Out[20]: []
 
 In [21]: Person.objects.filter(name__regex='^abc')
 Out[21]: []
-
-In [22]: Person.objects.filter(name__iregex='^abc')
-Out[22]: []
-
-In [23]: Person.objects.exclude(name__contains="WZ")
-Out[23]: [<Person: Person object>, <Person: Person object>, <Person: Person object>, <Person: Person object>]
-
-In [24]: Person.objects.filter(name__contains="abc").exclude(age=23)
-Out[24]: []
