@@ -1,0 +1,5 @@
+.DS_Store
+*.swp
+master.sh
+conf/WxPay.pub.config.php
+log/*
