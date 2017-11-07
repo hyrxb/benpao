@@ -1,0 +1,26 @@
+2017-10-20 17:46:21 pid:10677 Workerman[start.php] start in DEBUG mode
+2017-10-20 17:47:58 pid:10677 Workerman[start.php] stopping ...
+2017-10-20 17:47:58 pid:10677 Workerman[start.php] has been stopped
+2017-10-20 17:49:39 pid:10957 Workerman[start.php] start in DEBUG mode
+2017-10-20 17:51:40 pid:10957 Workerman[start.php] stopping ...
+2017-10-20 17:51:40 pid:10957 Workerman[start.php] has been stopped
+2017-10-20 17:51:45 pid:11149 Workerman[start.php] start in DEBUG mode
+2017-10-20 17:54:07 pid:11149 Workerman[start.php] stopping ...
+2017-10-20 17:54:07 pid:11149 Workerman[start.php] has been stopped
+2017-10-20 17:54:09 pid:11351 Workerman[start.php] start in DEBUG mode
+2017-10-20 17:55:34 pid:11351 Workerman[start.php] stopping ...
+2017-10-20 17:55:34 pid:11351 Workerman[start.php] has been stopped
+2017-10-20 17:55:37 pid:11464 Workerman[start.php] start in DEBUG mode
+2017-10-20 18:04:52 pid:11464 Workerman[start.php] stopping ...
+2017-10-20 18:04:53 pid:11464 Workerman[start.php] has been stopped
+2017-10-20 18:04:58 pid:12110 Workerman[start.php] start in DEBUG mode
+2017-10-20 18:08:24 pid:12110 Workerman[start.php] stopping ...
+2017-10-20 18:08:24 pid:12110 Workerman[start.php] has been stopped
+2017-10-20 18:08:27 pid:12355 Workerman[start.php] start in DEBUG mode
+2017-10-20 18:08:36 pid:12355 Workerman[start.php] stopping ...
+2017-10-20 18:08:36 pid:12355 Workerman[start.php] has been stopped
+2017-10-20 18:08:40 pid:12378 Workerman[start.php] start in DAEMON mode
+2017-10-20 18:08:47 pid:12396 Workerman[start.php] start in DAEMON mode
+2017-10-20 18:08:47 pid:12396 Workerman[start.php] already running
+2017-10-20 18:14:11 pid:12821 Workerman[start.php] start in DAEMON mode
+2017-10-20 18:14:11 pid:12821 Workerman[start.php] already running
