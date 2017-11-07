@@ -1,0 +1,7 @@
+安装包地址：http://www.dnspython.org/kits/1.9.4/
+
+步骤：
+ wget http://www.dnspython.org/kits/1.9.4/dnspython-1.9.4.tar.gz
+ tar zxvf dnspython-1.9.4.tar.gz
+ cd dnspython-1.9.4
+ python setup.py install
