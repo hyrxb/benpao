@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding:utf8 -*-
+# demo http://www.cnblogs.com/melonjiang/p/5342505.html
 
 import sys
 
