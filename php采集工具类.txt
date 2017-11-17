@@ -1,0 +1,36 @@
+PHP类推荐：QueryList|基于phpQuery的无比强大的PHP采集工具
+
+QueryList的出现让PHP做采集从未如此简单。得益于phpQuery，让使用QueryList几乎没有任何学习成本，只要会CSS3选择器就可以轻松使用QueryList了，和jQuery选择器用法完全通用，它让PHP做采集像jQuery选择元素一样简单。
+
+官方网站：http://www.querylist.cc/
+初探
+
+看看PHP用QueryList做采集到底有多简洁吧!
+
+<?php
+use QL\QueryList;
+
+//采集某页面所有的图片
+$data = QueryList::Query('http://cms.querylist.cc/bizhi/453.html',array(
+    //采集规则库
+    //'规则名' => array('jQuery选择器','要采集的属性'),
+    'image' => array('img','src')
+    ))->data;
+//打印结果
+print_r($data);
+
+//采集某页面所有的超链接
+//可以先手动获取要采集的页面源码
+$html = file_get_contents('http://cms.querylist.cc/google/list_1.html');
+//然后可以把页面源码或者HTML片段传给QueryList
+$data = QueryList::Query($html,array(
+    'link' => array('a','href')
+    ))->data;
+//打印结果
+print_r($data);
+
+/**
+ * 在线测试采集并查看采集结果:http://querylist.cc/page-Querytest.html
+ */
+
+
