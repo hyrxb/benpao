@@ -1,0 +1,31 @@
+
+
+如果以root身份运行将会出现以下问题
+
+root@yxjay:/opt/elasticsearch-2.3.5/bin# ./elasticsearch
+Exception in thread "main" java.lang.RuntimeException: don't run elasticsearch as root.
+at org.elasticsearch.bootstrap.Bootstrap.initializeNatives(Bootstrap.java:93)
+at org.elasticsearch.bootstrap.Bootstrap.setup(Bootstrap.java:144)
+at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:270)
+at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:35)
+Refer to the log for complete error details.
+
+
+解决方法1：
+
+在执行elasticSearch时加上参数-Des.insecure.allow.root=true，完整命令如下
+[plain] view plain copy
+
+    ./elasticsearch -Des.insecure.allow.root=true  
+
+解决办法2：
+
+用vi打开elasicsearch执行文件，在变量ES_JAVA_OPTS使用前添加以下命令
+[plain] view plain copy
+
+    ES_JAVA_OPTS="-Des.insecure.allow.root=true"  
+
+如下图所示，这个方法的好处是以后不用添加参数就能以root身份执行了
+
+参考出处：http://stackoverflow.com/questions/34920801/how-to-run-elasticsearch-2-1-1-as-root-user-in-linux-machine
+
