@@ -29,3 +29,219 @@ Refer to the log for complete error details.
 
 参考出处：http://stackoverflow.com/questions/34920801/how-to-run-elasticsearch-2-1-1-as-root-user-in-linux-machine
 
+
+elk中elasticsearch安装启动报错
+原创
+攻城狮赵峰
+2017-06-20 17:15
+评论(0)
+363人阅读
+
+
+elasticsearch安装之后。启动报错。elasticsearch版本为5.4.1
+
+下载安装：
+1
+2
+3
+4
+5
+	
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.4.1.tar.gz
+tar zxf elasticsearch-5.4.1.tar.gz
+mv elasticsearch-5.4.1 /usr/local/elasticsearch
+cd /usr/local/elasticsearch/
+./bin/elasticsearch
+
+[2017-06-20T09:57:45,307][WARN ][o.e.b.ElasticsearchUncaughtExceptionHandler] [node-1] uncaught exception in thread [main]
+
+org.elasticsearch.bootstrap.StartupException: java.lang.RuntimeException: can not run elasticsearch as root
+
+    at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:127) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Elasticsearch.execute(Elasticsearch.java:114) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.cli.EnvironmentAwareCommand.execute(EnvironmentAwareCommand.java:67) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.cli.Command.mainWithoutErrorHandling(Command.java:122) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.cli.Command.main(Command.java:88) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:91) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Elasticsearch.main(Elasticsearch.java:84) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+Caused by: java.lang.RuntimeException: can not run elasticsearch as root
+
+    at org.elasticsearch.bootstrap.Bootstrap.initializeNatives(Bootstrap.java:106) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Bootstrap.setup(Bootstrap.java:194) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Bootstrap.init(Bootstrap.java:350) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    at org.elasticsearch.bootstrap.Elasticsearch.init(Elasticsearch.java:123) ~[elasticsearch-5.4.1.jar:5.4.1]
+
+    ... 6 more
+
+wKioL1lI5kHxE9rDAAELFa1jFDs442.png
+
+原因：elasticsearch自5版本之后，处于安全考虑，不允许使用root用户运行。
+
+解决：创建一个普通用户，将elasticsearch 安装目录权限修改一下，切换至普通用户运行elasticsearch就可以了
+1
+2
+3
+4
+5
+	
+useradd  elk
+chown -R elk.elk /usr/local/elasticsearch/
+su -  elk
+cd /usr/local/elasticsearch/
+[elk@node1 elasticsearch]$ ./bin/elasticsearch
+
+
+[2017-06-20T19:38:54,458][INFO ][o.e.n.Node               ] [node-1] initializing ...
+
+[2017-06-20T19:38:54,535][INFO ][o.e.e.NodeEnvironment    ] [node-1] using [1] data paths, mounts [[/ (rootfs)]], net usable_space [12
+
+.7gb], net total_space [14.5gb], spins? [unknown], types [rootfs][2017-06-20T19:38:54,536][INFO ][o.e.e.NodeEnvironment    ] [node-1] heap size [1.9gb], compressed ordinary object pointers [true]
+
+[2017-06-20T19:38:54,537][INFO ][o.e.n.Node               ] [node-1] node name [node-1], node ID [3XuI5pfIRN6MUEuRkq6ZHw]
+
+[2017-06-20T19:38:54,537][INFO ][o.e.n.Node               ] [node-1] version[5.4.1], pid[2245], build[2cfe0df/2017-05-29T16:05:51.443Z
+
+], OS[Linux/3.10.0-327.el7.x86_64/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_131/25.131-b12][2017-06-20T19:38:54,537][INFO ][o.e.n.Node               ] [node-1] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSIn
+
+itiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+DisableExplicitGC, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/usr/local/elasticsearch][2017-06-20T19:38:55,358][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [aggs-matrix-stats]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [ingest-common]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-expression]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-groovy]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-mustache]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-painless]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [percolator]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [reindex]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [transport-netty3]
+
+[2017-06-20T19:38:55,359][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [transport-netty4]
+
+[2017-06-20T19:38:55,360][INFO ][o.e.p.PluginsService     ] [node-1] no plugins loaded
+
+[2017-06-20T19:38:56,602][INFO ][o.e.d.DiscoveryModule    ] [node-1] using discovery type [zen]
+
+[2017-06-20T19:38:57,145][INFO ][o.e.n.Node               ] [node-1] initialized
+
+[2017-06-20T19:38:57,146][INFO ][o.e.n.Node               ] [node-1] starting ...
+
+[2017-06-20T19:38:57,423][INFO ][o.e.t.TransportService   ] [node-1] publish_address {192.168.199.17:9300}, bound_addresses {192.168.1
+
+99.17:9300}[2017-06-20T19:38:57,429][INFO ][o.e.b.BootstrapChecks    ] [node-1] bound or publishing to a non-loopback or non-link-local address,
+
+enforcing bootstrap checksERROR: [2] bootstrap checks failed
+
+[1]: max file descriptors [4096] for elasticsearch process is too low, increase to at least [65536]
+
+[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+
+[2017-06-20T19:38:57,443][INFO ][o.e.n.Node               ] [node-1] stopping ...
+
+[2017-06-20T19:38:57,469][INFO ][o.e.n.Node               ] [node-1] stopped
+
+[2017-06-20T19:38:57,469][INFO ][o.e.n.Node               ] [node-1] closing ...
+
+[2017-06-20T19:38:57,498][INFO ][o.e.n.Node               ] [node-1] closed
+
+
+
+跟系统优化参数有关。修改sysctl内核参数
+1
+2
+3
+4
+5
+6
+7
+	
+sysctl -w vm.max_map_count=262144
+[root@node1 ~]# echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+[root@node1 ~]# sysctl -p
+vm.max_map_count = 262144
+[root@node1 ~]# vi /etc/security/limits.conf
+*       soft    nofile  65536
+*       hard    nofile  65536
+
+重新启动：
+1
+	
+[elk@node1 elasticsearch]$ ./bin/elasticsearch
+
+[2017-06-20T19:54:32,887][INFO ][o.e.n.Node               ] [node-1] initializing ...
+
+[2017-06-20T19:54:32,958][INFO ][o.e.e.NodeEnvironment    ] [node-1] using [1] data paths, mounts [[/ (rootfs)]], net usable_space [12
+
+.7gb], net total_space [14.5gb], spins? [unknown], types [rootfs][2017-06-20T19:54:32,958][INFO ][o.e.e.NodeEnvironment    ] [node-1] heap size [1.9gb], compressed ordinary object pointers [true]
+
+[2017-06-20T19:54:32,959][INFO ][o.e.n.Node               ] [node-1] node name [node-1], node ID [3XuI5pfIRN6MUEuRkq6ZHw]
+
+[2017-06-20T19:54:32,960][INFO ][o.e.n.Node               ] [node-1] version[5.4.1], pid[2244], build[2cfe0df/2017-05-29T16:05:51.443Z
+
+], OS[Linux/3.10.0-327.el7.x86_64/amd64], JVM[Oracle Corporation/OpenJDK 64-Bit Server VM/1.8.0_131/25.131-b12][2017-06-20T19:54:32,960][INFO ][o.e.n.Node               ] [node-1] JVM arguments [-Xms2g, -Xmx2g, -XX:+UseConcMarkSweepGC, -XX:CMSIn
+
+itiatingOccupancyFraction=75, -XX:+UseCMSInitiatingOccupancyOnly, -XX:+DisableExplicitGC, -XX:+AlwaysPreTouch, -Xss1m, -Djava.awt.headless=true, -Dfile.encoding=UTF-8, -Djna.nosys=true, -Djdk.io.permissionsUseCanonicalPath=true, -Dio.netty.noUnsafe=true, -Dio.netty.noKeySetOptimization=true, -Dio.netty.recycler.maxCapacityPerThread=0, -Dlog4j.shutdownHookEnabled=false, -Dlog4j2.disable.jmx=true, -Dlog4j.skipJansi=true, -XX:+HeapDumpOnOutOfMemoryError, -Des.path.home=/usr/local/elasticsearch][2017-06-20T19:54:33,856][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [aggs-matrix-stats]
+
+[2017-06-20T19:54:33,856][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [ingest-common]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-expression]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-groovy]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-mustache]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [lang-painless]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [percolator]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [reindex]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [transport-netty3]
+
+[2017-06-20T19:54:33,857][INFO ][o.e.p.PluginsService     ] [node-1] loaded module [transport-netty4]
+
+[2017-06-20T19:54:33,858][INFO ][o.e.p.PluginsService     ] [node-1] no plugins loaded
+
+[2017-06-20T19:54:35,473][INFO ][o.e.d.DiscoveryModule    ] [node-1] using discovery type [zen]
+
+[2017-06-20T19:54:36,118][INFO ][o.e.n.Node               ] [node-1] initialized
+
+[2017-06-20T19:54:36,118][INFO ][o.e.n.Node               ] [node-1] starting ...
+
+[2017-06-20T19:54:36,304][INFO ][o.e.t.TransportService   ] [node-1] publish_address {192.168.199.17:9300}, bound_addresses {192.168.1
+
+99.17:9300}[2017-06-20T19:54:36,310][INFO ][o.e.b.BootstrapChecks    ] [node-1] bound or publishing to a non-loopback or non-link-local address,
+
+enforcing bootstrap checks[2017-06-20T19:54:39,402][INFO ][o.e.c.s.ClusterService   ] [node-1] new_master {node-1}{3XuI5pfIRN6MUEuRkq6ZHw}{8FjudtquQS-SkPWx0B7d5
+
+A}{192.168.199.17}{192.168.199.17:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)[2017-06-20T19:54:39,438][INFO ][o.e.h.n.Netty4HttpServerTransport] [node-1] publish_address {192.168.199.17:9200}, bound_addresses {1
+
+92.168.199.17:9200}[2017-06-20T19:54:39,446][INFO ][o.e.n.Node               ] [node-1] started
+
+[2017-06-20T19:54:39,452][INFO ][o.e.g.GatewayService     ] [node-1] recovered [0] indices into cluster_state
+
+启动成功。按ctrl+C退出。使用-d参数让服务在后台运行
+1
+	
+[elk@node1 local]$ ./elasticsearch/bin/elasticsearch -d
+
+wKiom1lI5kGiqp4xAABFj6xKCq0383.png
+
+这样就启动成功了。
+
+注意：普通用户不能修改打开文件句柄数，切换到root用户，修改之后需要重启。
